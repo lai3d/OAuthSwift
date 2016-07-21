@@ -182,6 +182,17 @@ extension ViewController {
                 data, response in
                 let jsonDict: AnyObject! = try? NSJSONSerialization.JSONObjectWithData(data, options: [])
                 print(jsonDict)
+                
+                print("@@@@@@@@@@@@@@")
+                
+                oauthswift.client.get("https://api.twitter.com/1.1/followers/ids.json", parameters: [:],
+                    success: {
+                        data, response in
+                        let jsonDict : AnyObject! = try? NSJSONSerialization.JSONObjectWithData(data, options: [])
+                        print(jsonDict)
+                    }, failure: { error in
+                        print(error)
+                })
             }, failure: { error in
                 print(error)
         })
